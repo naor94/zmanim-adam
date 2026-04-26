@@ -48,6 +48,8 @@ export default function LoginPage() {
               placeholder="הכנס סיסמה"
               required
               autoFocus
+              autoCapitalize="none"
+              autoCorrect="off"
             />
           </div>
           {error && <p className="text-red-500 text-sm text-center">{error}</p>}
