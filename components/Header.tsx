@@ -16,14 +16,23 @@ export default function Header() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
+  function toggleMenu(e: React.MouseEvent | React.TouchEvent) {
+    e.preventDefault()
+    e.stopPropagation()
+    setOpen(o => !o)
+  }
+
   return (
     <>
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50" style={{ WebkitTransform: 'translateZ(0)', transform: 'translateZ(0)' }}>
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
-              onClick={() => setOpen(!open)}
-              className="p-2 rounded hover:bg-gray-100 transition-colors cursor-pointer"
+              type="button"
+              onClick={toggleMenu}
+              onTouchEnd={toggleMenu}
+              className="p-3 rounded cursor-pointer select-none"
+              style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation', minWidth: 44, minHeight: 44 }}
               aria-label="תפריט"
             >
               <div className="w-5 h-0.5 bg-gray-600 mb-1 pointer-events-none" />
@@ -45,7 +54,7 @@ export default function Header() {
           <nav className="absolute right-0 top-0 bg-gray-900 text-white w-56 h-full shadow-xl flex flex-col">
             <div className="flex items-center justify-between p-4 border-b border-gray-700">
               <span className="font-bold text-cyan-400">תפריט</span>
-              <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-white text-xl">✕</button>
+              <button type="button" onClick={() => setOpen(false)} className="text-gray-400 hover:text-white text-xl p-1" style={{ touchAction: 'manipulation' }}>✕</button>
             </div>
             <ul className="flex flex-col py-2">
               {navLinks.map((link) => (
@@ -53,7 +62,7 @@ export default function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className={`block px-6 py-3 text-sm hover:bg-gray-700 transition-colors ${
+                    className={`block px-6 py-4 text-sm hover:bg-gray-700 transition-colors ${
                       pathname === link.href ? "text-cyan-400 bg-gray-800" : "text-gray-200"
                     }`}
                   >
