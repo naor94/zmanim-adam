@@ -23,12 +23,12 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setOpen(!open)}
-              className="p-2 rounded hover:bg-gray-100 transition-colors"
+              className="p-2 rounded hover:bg-gray-100 transition-colors cursor-pointer"
               aria-label="תפריט"
             >
-              <div className="w-5 h-0.5 bg-gray-600 mb-1" />
-              <div className="w-5 h-0.5 bg-gray-600 mb-1" />
-              <div className="w-5 h-0.5 bg-gray-600" />
+              <div className="w-5 h-0.5 bg-gray-600 mb-1 pointer-events-none" />
+              <div className="w-5 h-0.5 bg-gray-600 mb-1 pointer-events-none" />
+              <div className="w-5 h-0.5 bg-gray-600 pointer-events-none" />
             </button>
           </div>
           <div className="text-center">
