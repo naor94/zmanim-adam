@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-noto-hebrew), system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  background-color: #f9fafb;
+  color: #1f2937;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+
+.section-header {
+  background-color: #ecfeff;
+  border-bottom: 2px solid #06b6d4;
+  padding: 8px 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0e7490;
+  text-align: center;
+}
+
+.prayer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.prayer-row:last-child { border-bottom: none; }
+.prayer-row:hover { background-color: #f0fdff; }
+
+.time-badge {
+  font-weight: 700;
+  color: #0e7490;
+  white-space: nowrap;
+  min-width: 42px;
+  text-align: center;
+}
+
+.synagogue-link {
+  color: #0891b2;
+  font-size: 0.75rem;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s;
+  background: white;
+}
+.form-input:focus {
+  border-color: #0891b2;
+  box-shadow: 0 0 0 2px #cffafe;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: none;
+  font-family: var(--font-sans);
+}
+
+.btn-primary { background-color: #0891b2; color: white; }
+.btn-primary:hover { background-color: #0e7490; }
+.btn-danger { background-color: #ef4444; color: white; }
+.btn-danger:hover { background-color: #dc2626; }
+.btn-ghost { background-color: #f1f5f9; color: #475569; }
+.btn-ghost:hover { background-color: #e2e8f0; }
+.btn-success { background-color: #22c55e; color: white; }
+.btn-success:hover { background-color: #16a34a; }
