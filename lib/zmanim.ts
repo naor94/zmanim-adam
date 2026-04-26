@@ -89,20 +89,19 @@ export async function fetchHebrewDate(date?: Date): Promise<HebrewDateData | nul
   }
 }
 
-export async function fetchDailyLearning(date?: Date): Promise<DailyLearning> {
-  const d = date ?? new Date()
-  const key = formatDate(d)
-  const url = `https://www.hebcal.com/hebcal?v=1&cfg=json&dafyomi=on&mishnaYomi=on&rambam1=on&yerushalmi=on&yt=G&year=${d.getFullYear()}&month=${d.getMonth() + 1}&start=${key}&end=${key}`
+export async function fetchDailyLearning(_date?: Date): Promise<DailyLearning> {
+  const url = 'https://www.sefaria.org/api/calendars?timezone=Asia/Jerusalem'
   try {
     const res = await fetch(url, { next: { revalidate: 86400 } })
     if (!res.ok) throw new Error("fetch failed")
     const json = await res.json()
     const result: DailyLearning = {}
-    for (const item of json.items || []) {
-      if (item.category === "dafyomi") result.dafYomi = item.hebrew || item.title
-      if (item.category === "yerushalmi") result.yerushalmi = item.hebrew || item.title
-      if (item.category === "rambam1") result.rambam = item.hebrew || item.title
-      if (item.category === "mishnayomi") result.mishnaYomi = item.hebrew || item.title
+    for (const item of json.calendar_items || []) {
+      const he = item.displayValue?.he
+      if (item.title?.en === 'Daf Yomi')        result.dafYomi    = he
+      if (item.title?.en === 'Yerushalmi Yomi') result.yerushalmi = he
+      if (item.title?.en === 'Daily Rambam')    result.rambam     = he
+      if (item.title?.en === 'Daily Mishnah')   result.mishnaYomi = he
     }
     return result
   } catch {
