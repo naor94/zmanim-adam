@@ -13,14 +13,8 @@ function formatDate(date: Date): string {
 
 function parseTime(iso: string | undefined): string | undefined {
   if (!iso) return undefined
-  try {
-    const d = new Date(iso)
-    const h = String(d.getHours()).padStart(2, "0")
-    const m = String(d.getMinutes()).padStart(2, "0")
-    return `${h}:${m}`
-  } catch {
-    return undefined
-  }
+  const match = iso.match(/T([0-9]{2}):([0-9]{2})/)
+  return match ? `${match[1]}:${match[2]}` : undefined
 }
 
 export async function fetchZmanim(date?: Date): Promise<ZmanimData> {
