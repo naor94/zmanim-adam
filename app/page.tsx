@@ -49,7 +49,7 @@ export default async function HomePage() {
       <main className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 border-x border-gray-200">
           <div className="border-l border-gray-200">
-            <TodayLessons lessons={lessons || []} />
+            <TodayPrayers prayers={prayers || []} />
           </div>
           <div className="border-l border-gray-200">
             <DailyLearningPanel learning={dailyLearning} />
@@ -57,7 +57,7 @@ export default async function HomePage() {
             <ZmanimTable zmanim={zmanim} />
           </div>
           <div>
-            <TodayPrayers prayers={prayers || []} />
+            <TodayLessons lessons={lessons || []} />
           </div>
         </div>
       </main>
