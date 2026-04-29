@@ -6,6 +6,7 @@ import TodayLessons from "@/components/TodayLessons"
 import ZmanimTable from "@/components/ZmanimTable"
 import ShabbatTimes from "@/components/ShabbatTimes"
 import DailyLearningPanel from "@/components/DailyLearning"
+import DateGuard from "@/components/DateGuard"
 import { supabase } from "@/lib/supabase"
 import { fetchZmanim, fetchShabbatTimes, fetchHebrewDate, fetchDailyLearning } from "@/lib/zmanim"
 
@@ -39,6 +40,7 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen">
+      <DateGuard serverDate={zmanim.date} />
       <Header />
       <div className="border-b border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
